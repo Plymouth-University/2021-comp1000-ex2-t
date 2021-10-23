@@ -101,7 +101,7 @@ namespace Exercise.Tests
         public void Test6(string a, string c, string b, string d)
         {
             var value = prog.ShuffelTheTextAdvanced(a,c,d);
-            Assert.True(value == b, $"You returned {value} but should have returned {c}");
+            Assert.True(value == b, $"You returned {value} but should have returned {b}");
         }
 
 
