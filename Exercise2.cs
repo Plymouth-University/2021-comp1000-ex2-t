@@ -11,13 +11,13 @@ namespace Exercise.Tests
             prog = new Program1();
         }
         [Theory]
-        [InlineData('a', "word", 12)]
-        [InlineData('d', "house", 0)]
-        [InlineData('d', "jjja", 55)]
+        [InlineData('d', "word", 12)]
+        [InlineData('a', "house", 0)]
+        [InlineData('c', "jjja", 55)]
         [InlineData('1', "jjja", -55)]
         public void Test1(char a, string b, int c)
         {
-            var value = prog.ReturnNumber(b, a, c);
+            var value = prog.ReturnNumercial(b, a, c);
             Assert.True(value == c, $"You returned {value} but should have returned {c}");
         }
 
@@ -26,10 +26,12 @@ namespace Exercise.Tests
         [InlineData('d', "house", 0)]
         [InlineData('d', "jjja", 55)]
         [InlineData('1', "jjja", -55)]
+        [InlineData('0', "0", 55)]
+        [InlineData('3', "a", -15)]
         public void Test2(char a, string b, int c)
         {
-            var value = prog.ReturnText(b, a, c);
-            Assert.True((char)value == a, $"You returned {value} but should have returned {b}");
+            var value = prog.PicksLetter(b, a, c);
+            Assert.True((char)value == a, $"You returned {value} but should have returned {a}");
         }
 
         [Theory]
@@ -37,11 +39,11 @@ namespace Exercise.Tests
         [InlineData("an", "word", "a", "a")]
         [InlineData("a long staff", "word", "other word", "word")]
         [InlineData("word", "word", "word", "word")]
-        [InlineData("house", "shoe", "snake", "shoe")]
+        [InlineData("house", "a", "snake", "a")]
         [InlineData("hole", "shoes", "snake", "hole")]
         public void Test3(string a, string b, string c, string d)
         {
-            var value = prog.ReturnText(a, b, c);
+            var value = prog.RetrievesShorestText(a, b, c);
             Assert.True(value == d, $"You returned {value} but should have returned {d}");
         }
 
@@ -52,7 +54,7 @@ namespace Exercise.Tests
         [InlineData(10, 2, "11", 12)]
         public void Test4(int a, int b, string c, int d)
         {
-            var value = prog.CalculatSum(a, b, c);
+            var value = prog.CalculatSumA(a, b, c);
             Assert.True(value == d, $"You returned {value} but should have returned {d}");
         }
 
@@ -63,7 +65,7 @@ namespace Exercise.Tests
         [InlineData(-100.1f, .1f, -95.0f, 'T', 5)]
         public void Test5(float a, float b, float c, char d, int e)
         {
-            var value = prog.CalculatSum2(a, d, e, b);
+            var value = prog.CalculatSumB(a, d, e, b);
             value = (int)(value * 1000) / 1000.0f;
             Assert.True( value ==c , $"You returned {value} but should have returned {c}");
         }
@@ -113,7 +115,7 @@ namespace Exercise.Tests
         [InlineData("thebgamebgoesbonbasblongbas there is time", 'b', 6)]
         public void Test9(string a, char b, int c)
         {
-            var value = prog.ReturnSubTextCount(a, b);
+            var value = prog.CutCounter(a, b);
             Assert.True(value == c, $"You returned {value} but should have returned {c}");
         }
     }

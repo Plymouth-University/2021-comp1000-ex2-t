@@ -55,7 +55,7 @@ namespace Exercise.Tests
         [InlineData("fivexslimes", "x", "slimesxfive")]
         public void Test2(string a, string b, string c)
         {
-            var value = prog.ShuffelTheText(a, b);
+            var value = prog.SplitShuffleAndReverseWords(a, b);
             Assert.True(value == c, $"You returned {value} but should have returned {c}");
         }
 
@@ -68,7 +68,7 @@ namespace Exercise.Tests
         [InlineData("fivexslimes", -1, 's')]
         public void Test3(string a, int b, char c)
         {
-            var value = prog.RetrieveCharacter(a, b);
+            var value = prog.GetValueAtPosition(a, b);
             Assert.True(value == c, $"You returned {value} but should have returned {c}");
         }
 
@@ -78,7 +78,7 @@ namespace Exercise.Tests
         [InlineData("2 cakes to go please", "2 CAKES TO GO PLEASE")]
         public void Test4(string a, string b)
         {
-            var value = prog.ChangeTheText(a);
+            var value = prog.ChangeTheTextB(a);
             Assert.True(value == b, $"You returned {value} but should have returned {b}");
         }
 
@@ -89,7 +89,7 @@ namespace Exercise.Tests
         [InlineData("GOODBYE my FRIEND", "goodbye MY friend")]
         public void Test5(string a, string b)
         {
-            var value = prog.ChangeTheText2(a);
+            var value = prog.ChangeTheTextA(a);
             Assert.True(value == b, $"You returned {value} but should have returned {b}");
         }
 
